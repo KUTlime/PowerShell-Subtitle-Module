@@ -63,7 +63,7 @@ Write-Subtitle
 Reads all srt files located in C:\MyMovies\SomeTVShow\SeasonOne path one by one. All subtitles are delayed by 5 seconds. The result is written to its original file in the original path.
 
 ```powershell
-      Get-ChildItem -Path C:\MyMovies\SomeTVShow\SeasonOne -Filter '*.srt' | 
+Get-ChildItem -Path C:\MyMovies\SomeTVShow\SeasonOne -Filter '*.srt' | 
 Read-Subtitle | 
 Sync-Subtitle -TimeShift 5000 | 
 Write-Subtitle -Path C:\Temp
@@ -71,7 +71,7 @@ Write-Subtitle -Path C:\Temp
 Reads all srt files located in C:\MyMovies\SomeTVShow\SeasonOne path one by one. All subtitles are delayed by 5 seconds. The result is written to its original file name in the new path C:\Temp.
 
 ```powershell
-      Get-ChildItem -Path C:\MyMovies\SomeTVShow\SeasonOne -Filter '*.srt' | 
+Get-ChildItem -Path C:\MyMovies\SomeTVShow\SeasonOne -Filter '*.srt' | 
 Read-Subtitle | 
 Sync-Subtitle -TimeShift 5000 | 
 Write-Subtitle -Suffix '-resync'
@@ -79,7 +79,7 @@ Write-Subtitle -Suffix '-resync'
 Reads all srt files located in C:\MyMovies\SomeTVShow\SeasonOne path one by one. All subtitles are delayed by 5 seconds. The result is written to the original file name modified by '-resync' suffix in the original path.
 
 ```powershell
-      Get-ChildItem -Path C:\MyMovies\SomeTVShow\SeasonOne -Filter '*.srt' | 
+Get-ChildItem -Path C:\MyMovies\SomeTVShow\SeasonOne -Filter '*.srt' | 
 Read-Subtitle | 
 Sync-Subtitle -TimeShift 5000 | 
 Write-Subtitle -Path C:\Temp -DestinationFileSuffix '-resync'
