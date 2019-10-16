@@ -12,6 +12,12 @@ This module gives PowerShell an easy, intuitive and powerful capability to handl
 * OOP and pipeline oriented.
 
 # Basic use
+To install the Subtitle module, just type following cmdlet into your PowerShell session with elevated prividledges.
+```powershell
+Install-Module -Name Subtitle
+```
+Now, you can use the module as you wish. For example:
+
 ```powershell
 Read-Subtitle -Path 'C:\MyMovies\SomeMovie\SomeMovie.srt' | 
 Sync-Subtitle -TimeShift 5000 | 
@@ -55,7 +61,7 @@ Write-Subtitle -Path C:\Temp -DestinationFileSuffix '-resync'
 Reads subtitles from the file SomeMovie.srt located in C:\MyMovies\SomeMovie\ path and delays all subtitles by 5 seconds. The result is written to the original file name modified by '-resync' suffix in the new path C:\Temp.
 
 ```powershell
-      Get-ChildItem -Path C:\MyMovies\SomeTVShow\SeasonOne -Filter '*.srt' | 
+Get-ChildItem -Path C:\MyMovies\SomeTVShow\SeasonOne -Filter '*.srt' | 
 Read-Subtitle | 
 Sync-Subtitle -TimeShift 5000 | 
 Write-Subtitle
@@ -86,7 +92,20 @@ Write-Subtitle -Path C:\Temp -DestinationFileSuffix '-resync'
 ```
 Reads all srt files located in C:\MyMovies\SomeTVShow\SeasonOne path one by one. All subtitles are delayed by 5 seconds. The result is written to the original file name modified by '-resync' suffix in the new path C:\Temp.
 
+```powershell
+Read-Subtitle -Path 'C:\MyMovies\SomeMovie\SomeMovie.srt' | 
+Sync-Subtitle -TimeShift 5000 -FromSubtitleIndex 100 -ToSubtitleIndex 450 | 
+Write-Subtitle -NewFile 'SomeMovieDVDVersion'
+```
+Reads subtitles from the file SomeMovie.srt located in C:\MyMovies\SomeMovie\ path and delays subtitles from index 100 to index 450 inclusively by 5 seconds. The result is written to the new file 'SomeMovieDVDVersion.srt' in the original path.
 
+```powershell
+Read-Subtitle -Path C:\MyMovies\SomeMovie\SomeMovie.srt |
+Sync-Subtitle -TimeShift 5000 -FromSubtitleTime '00:12:13.000' -ToSubtitleTime '01:02:03.000' |
+Write-Subtitle
+```
+Reads subtitles from the file SomeMovie.srt located in C:\MyMovies\SomeMovie\ path and delays all subtitles between time starting on 12 min 13 second inclusively to 1 hour 2 minutes and 3 seconds inclusively by 5 seconds. The subtitle before and after this interval will not be shifted. The result is written to its original file name.
+    
 # Subtitle class
 Represents a subtitle and its properties.
 ## Constructors
