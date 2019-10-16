@@ -94,17 +94,17 @@ Represents a subtitle and its properties.
 Only provided constructor. It extracts and transform the necessary information from raw string into subtitle instance.
 
 ## Properties
-### Index
+### UInt32 Index {get; set;}
 Gets or sets a subtitle index. UInt32 is used to store the value.
-### StartTime
+### TimeSpan StartTime {get; set;}
 Gets or sets a subtitle start time. The .NET TimeSpan structure is used to store the value.
-### EndTime
+### TimeSpan EndTime {get; set;}
 Gets or sets a subtitle end time. The .NET TimeSpan structure is used to store the value.
-### Text
+### String Text {get; set;}
 Gets or sets a subtitle text. The .NET string is used to store the value.
-### Path
+### System.IO.FileInfo Path {get; set;}
 Gets or sets the original file path from which the subtitle is extracted. The .NET System.IO.FileInfo is used to store the value.
-## Methods
+## Methods 
 ### Subtitle ChangeDuration(TimeSpan timespan)
 Adjusts the start and end time with the input timespan.
 ### string ToString()
