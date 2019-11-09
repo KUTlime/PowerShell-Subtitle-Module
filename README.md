@@ -151,4 +151,5 @@ All synchronized subtitles are written into temporary file with '\*.srt_' extens
 
 # Links
 [The PowerShell Subtitle Module at PowerShell Gallery](https://www.powershellgallery.com/packages/Subtitle/)
+
 [Parameter set cannot be resolved using the specified named parameters](https://stackoverflow.com/questions/18144016/powershell-parameter-set-cannot-be-resolved-using-the-specified-named-parameter)
