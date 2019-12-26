@@ -39,7 +39,7 @@
       Write-Warning -Message "The subtitle index $($this.Index) with line: $($lines[1]) is invalid."
     }
 
-    if ($lines.Length -gt 4)
+    if ($lines.Length -gt 5)
     {
       throw [System.ArgumentException]::new("Possible subtitle collision. Use split for these lines: $lines")
     }
@@ -134,13 +134,14 @@ function Read-Subtitle
   Begin
   {
   }
+
   Process
   {
     $subtitles = New-Object 'System.Collections.Generic.List[Subtitle]'
 
-    if (Test-Path -Path $Path)
+    if ($Path | Test-Path)
     {
-      $rawLines = (Get-Content -Path $Path -Raw) -split "`r`n`r`n"
+      $rawLines = (Get-Content -Path $Path.FullName -Raw) -split "`r`n`r`n"
       $rawLines | ForEach-Object { if ($_ -ne "") { $subtitles.Add([Subtitle]::new($_)) } }
     }
     Write-Debug -Message "The number of subtitles: $($subtitles.Count)"
@@ -153,9 +154,9 @@ function Read-Subtitle
 
     Write-Output $subtitles
   }
+
   End
   {
-
   }
 }
 
@@ -584,8 +585,6 @@ function Write-Subtitle
 
   Begin
   {
-
-
   }
   Process
   {
@@ -626,6 +625,7 @@ function Write-Subtitle
   End
   {
     Write-Verbose -Message "The pipeline processed."
+    Write-Verbose -Message $filePath
     Get-ChildItem -Path ([IO.Path]::GetDirectoryName($filePath)) -Filter '*.srt_' |
       ForEach-Object `
       {
